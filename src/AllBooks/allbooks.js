@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import './allbooks.css';
 
@@ -8,6 +8,10 @@ import './allbooks.css';
 const AllBooks = props => {
   const [data, setData] = useState([]);
     useEffect(() => {
+      if(props.isAuth) {
+      } else {
+        return props.history.push('/login');
+      }
         fetch('http://localhost:3030/books/get-books')
         .then(res => {
             return res.json()
@@ -17,10 +21,13 @@ const AllBooks = props => {
         })
     },[])
 
+    const getBookUrl = (id) => {
+      return "/book/" + id;
+    }
+
   return (
     <div className="table-container">
       <h3>All Books...</h3>
-      {props.isAuth ? 
       <table border="1">
         <tbody>
           <tr>
@@ -34,18 +41,17 @@ const AllBooks = props => {
             return (
               <tr key={index}>
                 <td>{item.title}</td>
-                <td>{item.price}</td>
+                <td>#{item.price}</td>
                 <td>{item.description}</td>
                 <td>{item.author}</td>
                 <td>
-                  <a href="#">View</a>
+                  <Link to={getBookUrl(item.id)}>View</Link>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      : <Redirect to="/login"/>}
     </div>
   );
 };
