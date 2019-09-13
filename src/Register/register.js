@@ -41,7 +41,7 @@ const Register = (props) => {
                 <label>Email</label>
                 <input onChange={handleInput} name="email" placeholder="Enter email" />
                 <label>Password</label>
-                <input onChange={handleInput} name="password" placeholder="Enter password" />
+                <input onChange={handleInput} type="password" name="password" placeholder="Enter password" />
                 <input onClick={handleSubmit} type="submit" value="Register" />
             </div>
         </div>
