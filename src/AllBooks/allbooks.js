@@ -52,6 +52,7 @@ const AllBooks = props => {
           })}
         </tbody>
       </table>
+      <p style={{marginTop: '1rem', fontSize: '1rem'}}>{data.length === 0 ? "There are no books available": ""}</p>
     </div>
   );
 };

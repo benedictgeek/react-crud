@@ -87,6 +87,7 @@ const ListBook = props => {
           })}
         </tbody>
       </table>
+        <p style={{marginTop: '1rem', fontSize: '1rem'}}>{userBooks.length === 0 ? "You have no books yet...": ""}</p>
     </div>
   );
 };
