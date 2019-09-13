@@ -10,7 +10,7 @@ const ListBook = props => {
     } else {
       return props.history.push('/login');
     }
-    fetch("http://localhost:3030/books/get-user-books/" + props.userId)
+    fetch("https://react-crud-backend.herokuapp.com/books/get-user-books/" + props.userId)
       .then(res => {
         return res.json();
       })
@@ -24,7 +24,7 @@ const ListBook = props => {
 
   const deleteBook = id => {
     console.log(id);
-    fetch("http://localhost:3030/books/delete-book/" + id)
+    fetch("https://react-crud-backend.herokuapp.com/books/delete-book/" + id)
       .then(res => {
         if (res.status === 200) {
           const newBooks = userBooks.filter(book => {

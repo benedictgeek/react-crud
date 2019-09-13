@@ -18,7 +18,7 @@ const AddBook = props => {
   };
 
   const handleSubmit = () => {
-    fetch("http://localhost:3030/books/add-book", {
+    fetch("https://react-crud-backend.herokuapp.com/books/add-book", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -14,7 +14,7 @@ const GetBook = props => {
       return props.history.push('/login');
     }
     
-    fetch("http://localhost:3030/books/get-book/" + bookId)
+    fetch("https://react-crud-backend.herokuapp.com/books/get-book/" + bookId)
       .then(res => {
         return res.json();
       })

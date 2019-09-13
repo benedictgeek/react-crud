@@ -16,7 +16,7 @@ const Register = (props) => {
     
       const handleSubmit = () => {
         console.log(formData);
-        fetch("http://localhost:3030/users/add-user", {
+        fetch("https://react-crud-backend.herokuapp.com/users/add-user", {
           method: 'POST',
           headers: {
             'Content-Type' : 'application/json'
