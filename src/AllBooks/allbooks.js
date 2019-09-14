@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect} from "react";
 import {Redirect, Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import './allbooks.css';
@@ -7,11 +7,13 @@ import './allbooks.css';
 
 const AllBooks = props => {
   const [data, setData] = useState([]);
+  useLayoutEffect(() => {
+    if(props.isAuth) {
+    } else {
+      return props.history.push('/login');
+    }
+  })
     useEffect(() => {
-      if(props.isAuth) {
-      } else {
-        return props.history.push('/login');
-      }
         fetch('https://react-crud-backend.herokuapp.com/books/get-books')
         .then(res => {
             return res.json()

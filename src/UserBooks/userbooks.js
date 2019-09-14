@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { Link} from "react-router-dom";
 import { connect } from "react-redux";
 
 const ListBook = props => {
   const [userBooks, setUserBooks] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if(props.isAuth) {
     } else {
       return props.history.push('/login');
     }
+  })
+
+  useEffect(() => {
     fetch("https://react-crud-backend.herokuapp.com/books/get-user-books/" + props.userId)
       .then(res => {
         return res.json();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect} from "react";
 import { connect } from "react-redux";
 import "./editbook.css";
 
@@ -15,11 +15,15 @@ const EditBook = props => {
   });
   const [edited, setEdited] = useState(false);
 
-  useEffect(() => {
-    if (props.isAuth) {
+  useLayoutEffect(() => {
+    if(props.isAuth) {
     } else {
-      return props.history.push("/login");
+      return props.history.push('/login');
     }
+  })
+
+  useEffect(() => {
+    
     fetch("https://react-crud-backend.herokuapp.com/books/get-book/" + id)
       .then(res => {
         return res.json();

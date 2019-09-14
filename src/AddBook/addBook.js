@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./addbook.css";
 
 const AddBook = props => {
+  useLayoutEffect(() => {
+    if(props.isAuth) {
+    } else {
+      return props.history.push('/login');
+    }
+  })
   let initialState = {
     title: "",
     price: "",
@@ -36,10 +42,6 @@ const AddBook = props => {
     });
   };
 
-  if(props.isAuth) {
-  } else {
-    props.history.push('/login');
-  }
   const { author, price, description, title } = formData;
 
   return (
